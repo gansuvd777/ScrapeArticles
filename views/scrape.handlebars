@@ -1,0 +1,31 @@
+<div class="" id="mainContent" >
+    <div class="text-center" id="cardReportheader">
+        <h4 class="mainTitle">PBS Parents || Experts Tips and Advice ||</h4>
+    </div>
+    <br>
+    <div class="route-button">
+        <a href="/"><button id="scrape-button" type="button" class="btn btn-danger" style="margin-right: 20px">Back to Home</button></a>
+        <a href="/saved"><button id="saved-button" type="button" class="btn btn-success">Saved Articles</button></a>
+    </div>
+
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-body player">
+                <div id="articles">
+                    {{#each article}}
+                    <li class="list-group-item">
+                        <h5 id="title-{{@index}}">{{this.title}}</h5>
+                        <a href="{{this.link}}" id="link-{{@index}}">{{this.link}}</a>
+                        <p id="img-{{@index}}"><img src="{{this.img}}"></p>
+                        <button data-id={{@index}} class="save-article btn btn-success">Save</button>
+                    </li>
+                    <hr>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

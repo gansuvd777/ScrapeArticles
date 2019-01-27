@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lobster|Merriweather');
+
+/* Home Page */
+body {
+    font-family           : 'Abril Fatface', cursive;
+}
+#mainContent {
+    background-image      : url("https://images-na.ssl-images-amazon.com/images/I/51wncRQR94L.jpg");
+	height                : 560px;
+	background-position   : center;
+	background-repeat     : no-repeat;
+    background-size       : cover;
+    border-radius         : 10px;
+    border                : solid 1.5px rgba(12, 103, 221, 0.699);
+}
+.route-button {
+    font-family           : 'Merriweather', serif;
+    font-weight           : bold;
+    text-align            : center;
+    margin-top            : 80px;
+}
+#scrape-button {
+    border-radius         : 10px;
+    border                : solid 1.5px rgb(235, 248, 52);
+    border-style          : double;
+    padding               : 10px 50px;
+    margin-right          : 20px;
+}
+#saved-button {
+    border-radius         : 10px;
+    padding               : 10px 50px;
+    border                : solid 1.5px rgb(248, 33, 25);
+    border-style          : double;
+}
+.mainTitle {
+    padding-top           : 200px;
+    color                 : white;
+    font-size             : 40px;
+    font-family           : 'Abril Fatface', cursive;
+}
+
+/* Article Card and box inside the card*/
+.card {
+    background-color      : rgb(225, 236, 61);
+    border-radius         : 15px;
+    border                : solid 1.5px rgb(40, 250, 40);
+}
+
+.list-group-item {
+    border-radius         : 5px;
+    border                : solid 1px red;
+}
+
+/* Modal */
+.modal-content {
+    background-color      : rgb(129, 241, 208);
+}
+#bodyinput{
+    border-radius         : 5px;
+    border                : solid 1px yellow;
+}
+
+footer {
+    width                 : 100%;
+    padding               : 10px;
+    background-color      : rgb(41, 176, 238);
+    font-family           : 'Lobster', cursive;
+    font-weight           : bold;
+    text-align            : center;
+    color                 : rgb(3, 8, 66);
+    margin                : auto auto 0 auto;
+}
+
+/* responsive */
+@media (min-width: 320px){
+    .route-button{
+        margin-left: 10%
+    }
+    #scrape-button, #saved-button{
+        margin-bottom: 20px
+    }
+}

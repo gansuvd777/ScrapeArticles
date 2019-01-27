@@ -1,0 +1,53 @@
+<div id="mainContent">
+    <div class="text-center" id="cardReportheader">
+        {{!-- <h4 class="h4-title">RECENT SAVED ARTICLES</h4> --}}
+        <h5 class="mainTitle">Your Saved Articles</h5>
+    </div>
+    <br>
+    <div class="route-button">
+        <a href="/"><button id="scrape-button" type="button" class="btn btn-danger" style="margin-right: 20px">Back to Home</button></a>
+        <a href="/scrape"><button id="saved-button" type="button" class="btn btn-success">Scrape Articles</button></a>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <!--Body-->
+        <div class="card col-md-12">
+            <div class="card-body player">
+                <div id="articles">
+                    {{#each savedArticle}}
+                    <li class="list-group-item">
+                        <h5>{{this.title}}</h5>
+                        <a href={{this.link}}>{{this.link}}</a>
+                        <img src={{this.img}}>
+                        <br>
+                        <button data-id={{this._id}} class="note-article btn btn-info" type="button" class="btn btn-success
+            "data-toggle="modal" data-target="#exampleModalLong">
+                            Note
+                        </button>
+                        <button data-id={{this._id}} class="delete-article btn btn-danger">Delete Article</button>
+                    </li>
+                    <hr>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
