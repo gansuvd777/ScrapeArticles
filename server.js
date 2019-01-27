@@ -27,7 +27,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ScrapeArticles";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://pbsparent:secret7@ds113815.mlab.com:13815/heroku_8134xxt6";
 mongoose.connect(MONGODB_URI);
 
 // Routes
