@@ -45,7 +45,7 @@ $(document).on("click", ".save-article", function (event) {
         $(".modal-title").append(data.title);
         $(".modal-body").append("<div><textarea id='bodyinput' rows='6' name='body' style='min-width: 100%;'></textarea></div> <hr>");
         $(".modal-footer").append("<button data-id='" + data._id + "' id='savenote' class='btn btn-warning btn-sm' style='margin-top:20px;'data-dismiss='modal'>Save Note</button>");
-  
+        console.log(data);
         if (data.note) {
           for ( var i = 0; i < data.note.length; i++) {
             $(".modal-body").append("<li class= 'list-group-item'><p>" + data.note[i].body + "</p><button data-id='" + data.note[i]._id + "'class= 'delete-note btn btn-danger'>X</button></li> <hr>");

@@ -28,7 +28,7 @@ app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ScrapeArticles";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
