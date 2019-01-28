@@ -12,6 +12,7 @@ module.exports = app => {
         const results = [];
         axios.get("http://www.pbs.org/parents/parenting/").then(response => {
             const $ = cheerio.load(response.data);
+            console.log(response.data);
             $("div.module-646 left-module-646").each((i, element) => {
                 const title = $(element).find("h4").text().trim();
                 const link = $(element).find("a").attr("href");
@@ -28,7 +29,7 @@ module.exports = app => {
 
                 results.push(result);
             });
-        });
+        }).catch(err  => console.log(err));
 
         res.json(results);
     });
