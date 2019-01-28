@@ -8,39 +8,15 @@ module.exports = app => {
     app.get("/", (req, res) => {
         res.render("index")
     });
-    app.get("/api/scrape", (req, res) => {
-        const results = [];
-        axios.get("http://www.pbs.org/parents/parenting/").then(response => {
-            const $ = cheerio.load(response.data);
-            $("div.module-646 left-module-646").each((i, element) => {
-                console.log("WE FOUND AN ELEMENT", element);
-                const title = $(element).find("h4").text().trim();
-                const link = $(element).find("a").attr("href");
-                const img = $(element).find("a").find("img").attr("alt srcset").split(",")[0].split(" ")[0];;
-                const articleCreated = moment().format("YYYY MM DD hh:mm:ss");
-
-                const result = {
-                    title: title,
-                    link: link,
-                    img: img,
-                    // articleCreated: articleCreated,
-                    isSaved: false
-                };
-
-                results.push(result);
-            });
-        }).catch(err  => console.log(err));
-
-        res.json(results);
-    });
+    
     // A GET route for scraping website
     app.get("/scrape", (req, res) => {
         axios.get("http://www.pbs.org/parents/parenting/").then(response => {
             const $ = cheerio.load(response.data);
-            $("div.module-646 left-module-646").each((i, element) => {
-                const title = $(element).find("h4").text().trim();
+            $("div.module-646").each((i, element) => {
+                const title = $(element).find("h4").find("a").text().trim();
                 const link = $(element).find("a").attr("href");
-                const img = $(element).find("a").find("img").attr("alt srcset").split(",")[0].split(" ")[0];;
+                const img = $(element).find("a img").attr("src");
                 const articleCreated = moment().format("YYYY MM DD hh:mm:ss");
 
                 const result = {
@@ -68,6 +44,7 @@ module.exports = app => {
             });
 
         });
+
         // All found articles on DOM
         db.Article.find({ isSaved: false })
             .then(dbArticle => {
