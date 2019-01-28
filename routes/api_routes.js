@@ -12,8 +12,8 @@ module.exports = app => {
         const results = [];
         axios.get("http://www.pbs.org/parents/parenting/").then(response => {
             const $ = cheerio.load(response.data);
-            console.log(response.data);
             $("div.module-646 left-module-646").each((i, element) => {
+                console.log("WE FOUND AN ELEMENT", element);
                 const title = $(element).find("h4").text().trim();
                 const link = $(element).find("a").attr("href");
                 const img = $(element).find("a").find("img").attr("alt srcset").split(",")[0].split(" ")[0];;
