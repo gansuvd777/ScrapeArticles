@@ -4,11 +4,34 @@ const cheerio = require("cheerio");
 const moment = require("moment");
 
 module.exports = app => {
-// Homepage/Default route
+    // Homepage/Default route
     app.get("/", (req, res) => {
         res.render("index")
     });
+    app.get("/api/scrape", (req, res) => {
+        axios.get("http://www.pbs.org/parents/parenting/").then(response => {
+            const results = [];
+            const $ = cheerio.load(response.data);
+            $("div.module-646 left-module-646").each((i, element) => {
+                const title = $(element).find("h4").text().trim();
+                const link = $(element).find("a").attr("href");
+                const img = $(element).find("a").find("img").attr("alt srcset").split(",")[0].split(" ")[0];;
+                const articleCreated = moment().format("YYYY MM DD hh:mm:ss");
 
+                const result = {
+                    title: title,
+                    link: link,
+                    img: img,
+                    // articleCreated: articleCreated,
+                    isSaved: false
+                };
+
+                results.push(result);
+            });
+        });
+
+        res.json(results);
+    });
     // A GET route for scraping website
     app.get("/scrape", (req, res) => {
         axios.get("http://www.pbs.org/parents/parenting/").then(response => {
