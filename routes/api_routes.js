@@ -9,8 +9,8 @@ module.exports = app => {
         res.render("index")
     });
     app.get("/api/scrape", (req, res) => {
+        const results = [];
         axios.get("http://www.pbs.org/parents/parenting/").then(response => {
-            const results = [];
             const $ = cheerio.load(response.data);
             $("div.module-646 left-module-646").each((i, element) => {
                 const title = $(element).find("h4").text().trim();
